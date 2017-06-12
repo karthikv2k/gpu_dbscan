@@ -105,7 +105,15 @@ class GpuDbscan():
 if __name__ == '__main__':
     n_points = int(sys.argv[1])
     d = int(sys.argv[2])
-    X = np.random.random((n_points, d)).astype(np.float32) # utils.get_test_blobs(n_points)
+    mode = sys.argv[3]
+    X = None
+    if mode == 'random':
+        X = np.random.random((n_points, d)).astype(np.float32)
+    elif mode == 'blob':
+        X = utils.get_test_blobs(n_points, d)
+    else:
+	print 'Unrecognized mode'
+	sys.exit(1)
 
     t = time.time()
     DBSCAN(eps=1, min_samples=10, metric='l2').fit(X)

@@ -25,7 +25,7 @@ def print_progress_bar(iteration, total, prefix='', suffix='', decimals=1, lengt
         print()
 
 
-def get_test_blobs(n_samples=1000):
+def get_test_blobs(n_samples=1000, d=2):
     centers = [[1, 1], [-1, -1], [1, -1]]
     X, labels_true = make_blobs(n_samples=n_samples, centers=centers, cluster_std=0.1, random_state=0)
     X = StandardScaler().fit_transform(X)
